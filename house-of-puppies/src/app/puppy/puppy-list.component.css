@@ -1,0 +1,14 @@
+.card-body{
+    background: #1f2638;
+    padding: 10px;
+}
+
+.card-title {
+    font-family: 'Poiret One', cursive; 
+    color: #fac628;
+    font-weight: 900;
+}
+
+.card-text {
+    color: #fff;
+}
