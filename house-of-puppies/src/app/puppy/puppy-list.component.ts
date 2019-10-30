@@ -4,7 +4,6 @@ import { PuppyService } from './puppy.service';
 
 
 @Component({
-    selector: 'app-puppy-list',
     templateUrl: './puppy-list.component.html',
     styleUrls: ['./puppy-list.component.css']
 })
@@ -15,7 +14,7 @@ export class PuppyListComponent implements OnInit {
 
     constructor(private puppySrv: PuppyService) {}
 
-    puppies: IPuppy[] = [];
+    puppiesArr: IPuppy[];
     errorMessage;
 
       onRatingClicked(message: string): void {
@@ -23,9 +22,12 @@ export class PuppyListComponent implements OnInit {
       }
 
       getPuppies(): void {
-          this.puppySrv.getPuppies().subscribe({
-            next(puppies) { this.puppies = puppies; },
-            error(err) { this.errorMessage = err; }
+           this.puppySrv.getPuppies().subscribe({
+            next: puppies => {
+            this.puppiesArr = puppies;
+            console.log('An array of Puppies: ', this.puppiesArr);
+          },
+            error: err => { this.errorMessage = err; }
           });
       }
 

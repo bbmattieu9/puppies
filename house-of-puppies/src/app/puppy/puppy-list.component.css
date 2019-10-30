@@ -1,3 +1,7 @@
+.card {
+    cursor: pointer;
+}
+
 .card-body{
     background: #1f2638;
     padding: 10px;

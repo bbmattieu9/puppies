@@ -1,23 +1,23 @@
-<div class="container">
-
-  <div class="row">
-    <div class="card-group" *ngIf="puppies && puppies.length">
-      <div class="card" *ngFor="let puppy of puppies">
-        <img [src]="puppy.imageUrl" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{ puppy.puppyName }} <br><span class="small"> {{ puppy.puppyCode | lowercase | convertToSpaces: '-'}}</span></h5>
-          <span class="card-text"><small class="text-muted">About:</small></span>
-          <p class="card-text">{{ puppy.description }}.</p>
-          <p class="card-text"><small class="text-muted">Rating</small></p>
-          <h6><app-star-rating [rating]='puppy.starRating'
-            (ratingClicked)="onRatingClicked($event)"></app-star-rating></h6>
-        </div>
+<div class="row">
+  <div class="card-group" *ngIf="puppiesArr && puppiesArr.length">
+    <div class="card" *ngFor="let puppy of puppiesArr" [routerLink]="['/puppy', puppy.puppyId]">
+      <img [src]="puppy.imageUrl" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ puppy.puppyName }} <br /><span class="small">
+            {{ puppy.puppyCode | lowercase | convertToSpaces: "-" }}</span
+          >
+        </h5>
+        <span class="card-text"><small class="text-muted">About:</small></span>
+        <p class="card-text">{{ puppy.description }}.</p>
+        <p class="card-text"><small class="text-muted">Rating</small></p>
+        <h6>
+          <app-star-rating
+            [rating]="puppy.starRating"
+            (ratingClicked)="onRatingClicked($event)"
+          ></app-star-rating>
+        </h6>
       </div>
-     
     </div>
   </div>
-
 </div>
-
-
-

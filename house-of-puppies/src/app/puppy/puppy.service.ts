@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IPuppy } from './puppy';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -10,7 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class PuppyService {
 
-    private puppyUrl = 'puppy/puppy.json';
+    private puppyUrl = '../api/puppy/puppy.json';
 
     //  allPuppies =  [
     //     {

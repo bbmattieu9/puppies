@@ -2,14 +2,21 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<div>
-  <h1>
-    Welcome to {{ title }}!!
-  </h1>
-  <app-puppy-list></app-puppy-list>
-</div>`,
+  template: `
+    <nav class='navbar navbar-expand navbar-light bg-light'>
+      <a class='navbar-brand'>{{ pageTitle }}</a>
+      <ul class='nav nav-pills'>
+        <li><a [routerLink]="['/welcome']" class='nav-link'>Home</a></li>
+        <li><a [routerLink]="['/puppies']" class='nav-link'>Puppies</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+  `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'house-of-puppies';
+  pageTitle = 'house-of-puppies';
 }
