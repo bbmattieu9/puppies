@@ -9,6 +9,7 @@ import { StarComponent } from './shared/star.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PuppyDetailComponent } from './puppy/puppy-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
+import { PuppyDetailGuard } from './puppy/puppy-detail.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { WelcomeComponent } from './home/welcome.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'puppies', component: PuppyListComponent },
-      { path: 'puppy/:id', component: PuppyDetailComponent },
+      { path: 'puppy/:id',
+        canActivate: [PuppyDetailGuard],
+        component: PuppyDetailComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
