@@ -1,12 +1,56 @@
-<div class="card" *ngIf="puppy">
-    <div class="card-header">
-        {{ pageTitle + ': ' + puppy.puppyName }}
+<div class='card'
+     *ngIf='puppy'>
+  <div class='card-header'>
+    {{pageTitle + ': ' + puppy.puppyName}}
+  </div>
+
+  <div class='card-body' *ngIf='puppy'>
+    <div class='row'>
+      <div class='col-md-8'>
+        <div class='row'>
+          <div class='col-md-4'>Name:</div>
+          <div class='col-md-8'>{{puppy.puppyName}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Code:</div>
+          <div class='col-md-8'>{{puppy.puppyCode | lowercase | convertToSpaces: '-'}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Description:</div>
+          <div class='col-md-8'>{{puppy.description}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Availability:</div>
+          <div class='col-md-8'>{{puppy.releaseDate}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Price:</div>
+          <div class='col-md-8'>{{puppy.price|currency:'USD':'symbol'}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>5 Star Rating:</div>
+          <div class='col-md-8'>
+            <!-- <pm-star [rating]='puppy.starRating'>
+            </pm-star> -->
+          </div>
+        </div>
+      </div>
+
+      <div class='col-md-4'>
+        <img class='center-block img-responsive'
+             [style.width.px]='300'
+             [style.margin.px]='2'
+             [src]='puppy.imageUrl'
+             [title]='puppy.puppyName'>
+      </div>
     </div>
-    <div class="footer">
-        <button class="btn btn-outline-secondary"
-        (click)='onBack()'
-        style="width: 80px;">
-              Back
-        </button>
-    </div>
+  </div>
+
+  <div class='card-footer'>
+    <button class='btn btn-outline-secondary'
+            (click)='onBack()'
+            style='width:80px'>
+      <i class='fa fa-chevron-left'></i> Puppies
+    </button>
+  </div>
 </div>

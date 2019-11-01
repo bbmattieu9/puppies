@@ -21,7 +21,7 @@ export class PuppyService {
         );
     }
 
-    getProduct(id: number): Observable<IPuppy | undefined> {
+    getPuppyById(id: number): Observable<IPuppy | undefined> {
         return this.getPuppies()
           .pipe(
             map((puppies: IPuppy[]) => puppies.find(p => p.puppyId === id))

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { IPuppy } from './puppy';
+import { PuppyService } from './puppy.service';
 
 @Component({
   templateUrl: './puppy-detail.component.html',
@@ -10,22 +12,28 @@ export class PuppyDetailComponent implements OnInit {
 
   pageTitle = 'Puppy Name';
   puppy: IPuppy;
+  errorMessage;
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private puppySrv: PuppyService) { }
 
   ngOnInit() {
-    let id = +this.route.snapshot.paramMap.get('id');
-    this.puppy =  {
-      puppyId: 10,
-      puppyName: 'Hush',
-      puppyCode: 'GMG-0042',
-      releaseDate: 'October 15, 2019',
-      description: 'Standard two-button video game controller',
-      price: 35.95,
-      starRating: 4.6,
-      imageUrl: 'assets/images/hush.jpg'
-};
+    const param = this.route.snapshot.paramMap.get('id');
+    if (param) {
+      const id = +param;
+      this.getPuppyById(id);
+    }
+  }
+
+  getPuppyById(puppyId: number) {
+    this.puppySrv.getPuppyById(puppyId).subscribe({
+      next: puppy => {
+        this.puppy = puppy;
+        console.log(`Single Puppy Fetched is:`);
+      },
+      error: err => { this.errorMessage = err; }
+    });
   }
 
 
